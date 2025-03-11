@@ -3,47 +3,244 @@ import re
 import random
 import string
 
-# Set page config
+# Configure Streamlit's behavior and security settings
 st.set_page_config(
-    page_title="🛡️ SecureKey Guardian - Password Strength Analyzer",
+    page_title="🛡️ SecureKey Guardian",
     page_icon="🛡️",
     layout="centered",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="collapsed",
+    menu_items={
+        'Get Help': None,
+        'Report a bug': None,
+        'About': "# SecureKey Guardian\nA secure password strength analyzer and generator."
+    }
 )
 
-# Set page title and custom CSS
+# Add security headers and configure browser features
+st.markdown("""
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2e4053">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Permissions-Policy" content="ambient-light-sensor=(), battery=(), document-domain=(), layout-animations=(), oversized-images=(), sync-xhr=(), wake-lock=(), vr=()">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:; connect-src 'self' https:; img-src 'self' data: https:; frame-ancestors 'none';">
+    """, unsafe_allow_html=True)
+
+# Custom CSS with improved styling, form handling, and cross-browser compatibility
 st.markdown("""
     <style>
-    /* Hide the default Streamlit menu button */
+    /* Reset and base styles */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+
+    /* Hide Streamlit elements */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+    header {visibility: hidden;}
     
-    .stTextInput > div > div > input {
-        font-size: 20px;
+    /* Base styles */
+    .stApp {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        min-height: stretch;
     }
+    
+    /* Scrollbar styling */
+    * {
+        scrollbar-width: thin;
+        -webkit-scrollbar-width: thin;
+    }
+    
+    *::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    *::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    *::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+    
+    /* Form styles with accessibility improvements */
+    .form-group {
+        margin: 20px 0;
+        padding: clamp(15px, 3vw, 30px);
+        border-radius: 8px;
+        background: rgba(255,255,255,0.05);
+        width: 100%;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: clamp(14px, 2vw, 16px);
+        color: #2e4053;
+        font-weight: 500;
+    }
+    
+    .password-input {
+        width: 100%;
+        padding: clamp(8px, 2vw, 15px);
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: clamp(14px, 2vw, 18px);
+        margin-bottom: 10px;
+        transition: border-color 0.3s ease;
+    }
+    
+    .password-input:focus {
+        outline: none;
+        border-color: #2e4053;
+        box-shadow: 0 0 0 2px rgba(46,64,83,0.2);
+    }
+    
+    /* Feedback styles */
     .feedback {
-        padding: 10px;
-        border-radius: 5px;
-        margin: 10px 0;
+        padding: clamp(12px, 2.5vw, 20px);
+        border-radius: 8px;
+        margin: 15px 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        font-size: clamp(14px, 2vw, 16px);
     }
-    .weak { background-color: #ffebee; color: #c62828; }
-    .moderate { background-color: #fff3e0; color: #ef6c00; }
-    .strong { background-color: #e8f5e9; color: #2e7d32; }
+    
+    .weak { 
+        background-color: #ffebee; 
+        color: #c62828; 
+    }
+    
+    .moderate { 
+        background-color: #fff3e0; 
+        color: #ef6c00; 
+    }
+    
+    .strong { 
+        background-color: #e8f5e9; 
+        color: #2e7d32; 
+    }
+    
+    /* Title styles */
     .title {
-        font-size: 48px;
+        font-size: clamp(32px, 5vw, 48px);
         font-weight: bold;
-        margin-bottom: 15px;
+        margin: clamp(20px, 4vw, 30px) 0 clamp(10px, 2vw, 15px);
         text-align: center;
         color: #2e4053;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
-        padding: 20px 0;
+        padding: clamp(15px, 3vw, 20px) 0;
+        line-height: 1.2;
     }
+    
+    /* Subtitle styles */
     .subtitle {
-        font-size: 24px;
+        font-size: clamp(18px, 3vw, 24px);
         font-weight: normal;
-        margin-bottom: 25px;
+        margin-bottom: clamp(15px, 3vw, 25px);
         text-align: center;
         color: #34495e;
+        line-height: 1.4;
+    }
+    
+    /* Button styles */
+    .stButton button {
+        width: 100%;
+        max-width: 600px;
+        padding: clamp(8px, 2vw, 15px) clamp(15px, 3vw, 25px);
+        border-radius: 8px;
+        font-weight: 600;
+        margin: 10px auto;
+        font-size: clamp(14px, 2vw, 16px);
+        display: block;
+    }
+    
+    /* Expander and section styles */
+    .streamlit-expanderHeader {
+        font-size: clamp(16px, 2.5vw, 20px);
+    }
+    
+    .streamlit-expanderContent {
+        font-size: clamp(14px, 2vw, 16px);
+    }
+    
+    /* Progress bar styling */
+    .stProgress > div > div > div {
+        height: clamp(6px, 1.5vw, 10px);
+    }
+    
+    /* Code block styling */
+    .stCodeBlock {
+        font-size: clamp(14px, 2vw, 16px);
+    }
+    
+    /* Info box styling */
+    .stAlert {
+        font-size: clamp(14px, 2vw, 16px);
+    }
+    
+    /* Markdown content */
+    .stMarkdown {
+        font-size: clamp(14px, 2vw, 16px);
+    }
+    
+    /* Section headings */
+    h1 { font-size: clamp(28px, 4vw, 36px); }
+    h2 { font-size: clamp(24px, 3.5vw, 32px); }
+    h3 { font-size: clamp(20px, 3vw, 28px); }
+    
+    /* Responsive grid for themes */
+    .theme-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+    }
+    
+    /* Theme card styling */
+    .theme-card {
+        padding: 15px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Media Queries */
+    @media screen and (max-width: 768px) {
+        .stApp {
+            padding: 0 10px;
+        }
+        
+        form {
+            padding: 15px;
+        }
+        
+        .feedback {
+            padding: 12px;
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        .stApp {
+            padding: 0 5px;
+        }
+        
+        .theme-grid {
+            grid-template-columns: 1fr;
+        }
     }
     </style>
     """, unsafe_allow_html=True)
@@ -217,18 +414,32 @@ def display_achievement(score):
 def main():
     """Main application function."""
     # Header
+    st.markdown('<div class="container" role="main">', unsafe_allow_html=True)
     st.markdown('<h1 class="title">🛡️ SecureKey Guardian</h1>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">Your Personal Password Strength Builder</p>', unsafe_allow_html=True)
     st.write("Transform your passwords from vulnerable to unbreakable!")
     
     # Safety disclaimer
-    st.info("⚠️ Practice creating strong passwords without security risks! Use dummy passwords to learn how to enhance your security without entering real credentials.", )
+    st.info("⚠️ Practice creating strong passwords without security risks! Use dummy passwords to learn how to enhance your security without entering real credentials.")
     
-    # Main password input and check
-    password = st.text_input("Enter your password:", type="password")
+    # Main password input and check with improved accessibility
+    st.markdown("""
+        <div class="form-group" role="form" aria-label="Password Check Form">
+            <label class="form-label" for="password-input">Enter your password:</label>
+            <input type="password" 
+                   id="password-input" 
+                   name="password-input" 
+                   class="password-input" 
+                   autocomplete="new-password"
+                   aria-label="Password input field"
+                   aria-describedby="password-help">
+            <div id="password-help" class="help-text">Enter a password to check its strength</div>
+        </div>
+    """, unsafe_allow_html=True)
+    password = st.text_input("", type="password", key="password_input", help="Enter a password to check its strength")
     
     # Generate password button
-    if st.button("Generate Strong Password"):
+    if st.button("Generate Strong Password", key="generate_btn"):
         generated_password = generate_password()
         st.code(generated_password, language=None)
         st.info("👆 Copy this password and use it in the checker above to verify its strength!")
@@ -281,23 +492,44 @@ def main():
                 for item in feedback:
                     st.write(item)
     
-    # Password Creation Game
+    # Password Creation Game with responsive grid
     st.markdown("---")
     st.markdown("## 🎮 Password Creation Game")
     st.write("Try creating passwords following these fun themes and test their strength:")
     
+    # Create a grid container for themes
+    st.markdown('<div class="theme-grid">', unsafe_allow_html=True)
     for theme, details in PASSWORD_THEMES.items():
-        st.markdown(f"\n{theme}: {details['desc']}")
-        st.markdown(f"- Example: `{details['example']}`")
+        st.markdown(f"""
+            <div class="theme-card">
+                <h3>{theme}</h3>
+                <p>{details['desc']}</p>
+                <p><code>{details['example']}</code></p>
+            </div>
+        """, unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
     
-    st.markdown("\nRemember: The key is to be creative while following security rules!")
-    
-    # Password Master Challenge
+    # Password Master Challenge with improved accessibility
     st.markdown("## 🏆 Password Master Challenge")
-    challenge_password = st.text_input("Create your ultimate password:", type="password", key="challenge")
+    st.markdown("""
+        <div class="form-group" role="form" aria-label="Password Challenge Form">
+            <label class="form-label" for="challenge-input">Create your ultimate password:</label>
+            <input type="password" 
+                   id="challenge-input" 
+                   name="challenge-input" 
+                   class="password-input" 
+                   autocomplete="new-password"
+                   aria-label="Challenge password input field"
+                   aria-describedby="challenge-help">
+            <div id="challenge-help" class="help-text">Create your strongest password</div>
+        </div>
+    """, unsafe_allow_html=True)
+    challenge_password = st.text_input("", type="password", key="challenge_input", help="Create your strongest password")
     if challenge_password:
         score, feedback = check_password_strength(challenge_password)
         display_achievement(score)
+    
+    st.markdown('</div>', unsafe_allow_html=True)  # Close container
 
 if __name__ == "__main__":
     main() 
