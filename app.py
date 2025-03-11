@@ -79,7 +79,7 @@ st.markdown("""
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 1rem;
+        padding: 0.5rem;
         display: flex;
         flex-direction: column;
     }
@@ -88,9 +88,9 @@ st.markdown("""
     .desktop-grid {
         display: grid;
         grid-template-columns: 2fr 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
         align-items: start;
-        margin: 1.5rem 0 2rem;
+        margin: 1rem 0 1.5rem;
     }
     
     @media (max-width: 768px) {
@@ -172,14 +172,14 @@ st.markdown("""
     
     /* Section spacing improvements */
     .section {
-        margin: 1.5rem 0;
+        margin: 1rem 0;
         position: relative;
     }
     
     .section:not(:last-child)::after {
         content: "";
         position: absolute;
-        bottom: -0.75rem;
+        bottom: -0.5rem;
         left: 20%;
         right: 20%;
         height: 1px;
@@ -190,7 +190,7 @@ st.markdown("""
     .section h2 {
         font-size: clamp(24px, 3vw, 32px);
         color: #2e4053;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
     
     /* Divider styling */
@@ -217,11 +217,11 @@ st.markdown("""
     .title {
         font-size: clamp(32px, 5vw, 48px);
         font-weight: bold;
-        margin: clamp(10px, 2vw, 20px) 0 clamp(5px, 1vw, 10px);
+        margin: 0.5rem 0 clamp(5px, 1vw, 10px);
         text-align: center;
         color: #2e4053;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
-        padding: clamp(10px, 2vw, 15px) 0;
+        padding: 0.5rem 0;
         line-height: 1.2;
     }
     
@@ -229,7 +229,7 @@ st.markdown("""
     .subtitle {
         font-size: clamp(18px, 3vw, 24px);
         font-weight: normal;
-        margin-bottom: clamp(10px, 2vw, 15px);
+        margin-bottom: 0.75rem;
         text-align: center;
         color: #34495e;
         line-height: 1.4;
@@ -282,10 +282,10 @@ st.markdown("""
     /* Challenge section improvements */
     .challenge-section {
         background: linear-gradient(135deg, #2e4053 0%, #34495e 100%);
-        padding: 2rem;
+        padding: 1.5rem;
         border-radius: 16px;
         color: white;
-        margin: 1.5rem 0;
+        margin: 1rem 0;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         border: 2px solid rgba(255,255,255,0.1);
     }
@@ -317,14 +317,14 @@ st.markdown("""
     
     /* Remove experiment lab box */
     .experiment-lab {
-        margin: 2rem 0;
+        margin: 1.5rem 0;
         padding: 0;
         background: transparent;
     }
     
     /* Remove password game box */
     .password-game {
-        margin: 2rem 0;
+        margin: 1.5rem 0;
         padding: 0;
     }
     
