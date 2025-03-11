@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 SecureKey Guardian - Password Strength Analyzer
 
 SecureKey Guardian is an interactive password strength analyzer built with Streamlit. It helps users evaluate and improve their passwords by providing instant feedback and suggestions.
@@ -52,3 +53,41 @@ Numbers (0-9)
 Special characters (!@#$%^&*)
 
 Avoiding common passwords, sequences, and repeated characters
+=======
+# Password Strength Meter 🔐
+
+A secure and user-friendly password strength checker built with Python and Streamlit.
+
+## Features
+
+- Password strength evaluation based on multiple criteria
+- Real-time feedback and suggestions
+- Password generator
+- Beautiful Streamlit interface
+- Common password blacklist
+
+## Setup
+
+1. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+2. Run the application:
+```bash
+streamlit run app.py
+```
+
+## Password Strength Criteria
+
+- Minimum length: 8 characters
+- Must contain uppercase & lowercase letters
+- Must include at least one digit (0-9)
+- Must have one special character (!@#$%^&*)
+
+## Scoring System
+
+- Weak (Score: 1-2): Short, missing key elements
+- Moderate (Score: 3-4): Good but missing some security features
+- Strong (Score: 5): Meets all criteria 
+>>>>>>> 8388076 (Project releases)
