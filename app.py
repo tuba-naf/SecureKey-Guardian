@@ -203,8 +203,8 @@ st.markdown("""
     /* Info box improvements */
     .stAlert {
         border-radius: 12px !important;
-        padding: 0.75rem !important;
-        margin: 0.75rem 0 !important;
+        padding: 0.5rem 0.75rem !important;
+        margin: 0.25rem 0 !important;
     }
     
     /* Progress bar enhancements */
@@ -336,7 +336,7 @@ st.markdown("""
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
-        margin: 0.75rem 0;
+        margin: 0.5rem 0 0.25rem 0;
         padding: 0;
         line-height: 1.4;
     }
@@ -516,12 +516,12 @@ def main():
     st.markdown('<h1 class="title">🛡️ SecureKey Guardian</h1>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">Your Personal Password Strength Builder</p>', unsafe_allow_html=True)
     
-    # Safety disclaimer with improved spacing
+    # Add gradient heading and safety disclaimer with reduced spacing
     st.markdown('<h3 class="heading-gradient">Strengthen your password from vulnerable to unbreakable</h3>', unsafe_allow_html=True)
     st.info("⚠️ Practice creating strong passwords without security risks! Use dummy passwords to learn how to enhance your security without entering real credentials.")
     
-    # Main content grid
-    st.markdown('<div class="desktop-grid">', unsafe_allow_html=True)
+    # Main content grid with reduced top margin
+    st.markdown('<div class="desktop-grid" style="margin-top: 1rem;">', unsafe_allow_html=True)
     
     # Left column - Password checker and generator
     st.markdown('<div class="main-column">', unsafe_allow_html=True)
