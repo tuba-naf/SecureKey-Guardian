@@ -172,14 +172,14 @@ st.markdown("""
     
     /* Section spacing improvements */
     .section {
-        margin: 2rem 0;
+        margin: 1.5rem 0;
         position: relative;
     }
     
     .section:not(:last-child)::after {
         content: "";
         position: absolute;
-        bottom: -1rem;
+        bottom: -0.75rem;
         left: 20%;
         right: 20%;
         height: 1px;
@@ -203,7 +203,8 @@ st.markdown("""
     /* Info box improvements */
     .stAlert {
         border-radius: 12px !important;
-        padding: 1rem !important;
+        padding: 0.75rem !important;
+        margin: 0.75rem 0 !important;
     }
     
     /* Progress bar enhancements */
@@ -284,24 +285,30 @@ st.markdown("""
         padding: 2rem;
         border-radius: 16px;
         color: white;
-        margin: 2rem 0;
+        margin: 1.5rem 0;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border: 2px solid rgba(255,255,255,0.1);
     }
     
     .challenge-title {
         color: white;
         text-align: center;
         font-size: clamp(24px, 4vw, 36px);
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        background: linear-gradient(90deg, #ffffff, #e0e3e8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
     }
     
     .challenge-description {
-        color: rgba(255,255,255,0.9);
+        color: rgba(255,255,255,0.95);
         text-align: center;
         font-size: clamp(16px, 2vw, 18px);
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         line-height: 1.6;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
     
     /* Button spacing */
@@ -320,6 +327,19 @@ st.markdown("""
     .password-game {
         margin: 2rem 0;
         padding: 0;
+    }
+    
+    /* Heading styles */
+    .heading-gradient {
+        font-size: clamp(20px, 3vw, 24px);
+        font-weight: 600;
+        background: linear-gradient(90deg, #2e4053, #34495e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        margin: 0.75rem 0;
+        padding: 0;
+        line-height: 1.4;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -497,6 +517,9 @@ def main():
     st.markdown('<h1 class="title">🛡️ SecureKey Guardian</h1>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">Your Personal Password Strength Builder</p>', unsafe_allow_html=True)
     
+    # New heading before practice message
+    st.markdown('<h3 class="heading-gradient">Strengthen your password from vulnerable to unbreakable</h3>', unsafe_allow_html=True)
+    
     # Safety disclaimer with improved spacing
     st.info("⚠️ Practice creating strong passwords without security risks! Use dummy passwords to learn how to enhance your security without entering real credentials.")
     
@@ -599,14 +622,22 @@ def main():
         <div class="challenge-section">
             <h2 class="challenge-title">🏆 Ultimate Password Master Challenge</h2>
             <p class="challenge-description">
-                Ready to prove your password creation skills? Create the ultimate secure password 
-                combining everything you've learned about strong passwords. Can you achieve the 
-                perfect score and become a Password Master?
+                Ready to showcase your password mastery? Create the ultimate secure password that combines 
+                all the best practices you've learned. Aim for that perfect score and prove you're a true 
+                Password Security Master! Remember to include:
+                <br><br>
+                • Complex character combinations
+                <br>
+                • Unique patterns and memorable elements
+                <br>
+                • Proper length and diversity
+                <br>
+                • No common patterns or sequences
             </p>
         </div>
     """, unsafe_allow_html=True)
     
-    # Master Challenge input
+    # Master Challenge input with improved styling
     master_password = st.text_input(
         "Create your ultimate password:", 
         type="password",
@@ -622,10 +653,10 @@ def main():
         if score == 5:
             st.balloons()
             st.markdown("""
-                <div style="text-align: center; padding: 2rem;">
-                    <h2 style="color: #2e7d32;">🎉 CONGRATULATIONS! 🎉</h2>
-                    <p style="font-size: 1.2rem; color: #2e7d32;">
-                        You've created a perfect password and mastered the art of password security!
+                <div style="text-align: center; padding: 1.5rem; background: linear-gradient(135deg, rgba(46,125,50,0.1), rgba(46,125,50,0.2)); border-radius: 12px; margin: 1rem 0;">
+                    <h2 style="color: #2e7d32; margin-bottom: 0.75rem;">🎉 CONGRATULATIONS! 🎉</h2>
+                    <p style="font-size: 1.2rem; color: #2e7d32; margin: 0;">
+                        You've achieved password perfection! Your masterful creation demonstrates expert-level understanding of password security.
                     </p>
                 </div>
             """, unsafe_allow_html=True)
