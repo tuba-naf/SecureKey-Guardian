@@ -79,7 +79,7 @@ st.markdown("""
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0.5rem;
+        padding: 0.25rem;
         display: flex;
         flex-direction: column;
     }
@@ -203,8 +203,8 @@ st.markdown("""
     /* Info box improvements */
     .stAlert {
         border-radius: 12px !important;
-        padding: 0.5rem 0.75rem !important;
-        margin: 0.25rem 0 !important;
+        padding: 0.4rem 0.75rem !important;
+        margin: 0.1rem 0 0.5rem !important;
     }
     
     /* Progress bar enhancements */
@@ -217,11 +217,11 @@ st.markdown("""
     .title {
         font-size: clamp(32px, 5vw, 48px);
         font-weight: bold;
-        margin: 0.5rem 0 clamp(5px, 1vw, 10px);
+        margin: 0.25rem 0 0.15rem;
         text-align: center;
         color: #2e4053;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
-        padding: 0.5rem 0;
+        padding: 0.25rem 0;
         line-height: 1.2;
     }
     
@@ -229,7 +229,7 @@ st.markdown("""
     .subtitle {
         font-size: clamp(18px, 3vw, 24px);
         font-weight: normal;
-        margin-bottom: 0.75rem;
+        margin: 0 0 0.15rem;
         text-align: center;
         color: #34495e;
         line-height: 1.4;
@@ -336,7 +336,7 @@ st.markdown("""
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
-        margin: 0.5rem 0 0.25rem 0;
+        margin: 0.15rem 0 0.15rem 0;
         padding: 0;
         line-height: 1.4;
     }
