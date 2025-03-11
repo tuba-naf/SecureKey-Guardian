@@ -79,7 +79,7 @@ st.markdown("""
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 2rem;
+        padding: 1rem;
         display: flex;
         flex-direction: column;
     }
@@ -88,9 +88,9 @@ st.markdown("""
     .desktop-grid {
         display: grid;
         grid-template-columns: 2fr 1fr;
-        gap: 3rem;
+        gap: 2rem;
         align-items: start;
-        margin: 2rem 0 4rem;
+        margin: 1.5rem 0 2rem;
     }
     
     @media (max-width: 768px) {
@@ -105,7 +105,7 @@ st.markdown("""
         border-radius: 12px;
         padding: clamp(20px, 3vw, 30px);
         box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
     
     .form-label {
@@ -172,14 +172,14 @@ st.markdown("""
     
     /* Section spacing improvements */
     .section {
-        margin: 4rem 0;
+        margin: 2rem 0;
         position: relative;
     }
     
     .section:not(:last-child)::after {
         content: "";
         position: absolute;
-        bottom: -2rem;
+        bottom: -1rem;
         left: 20%;
         right: 20%;
         height: 1px;
@@ -216,11 +216,11 @@ st.markdown("""
     .title {
         font-size: clamp(32px, 5vw, 48px);
         font-weight: bold;
-        margin: clamp(20px, 4vw, 30px) 0 clamp(10px, 2vw, 15px);
+        margin: clamp(10px, 2vw, 20px) 0 clamp(5px, 1vw, 10px);
         text-align: center;
         color: #2e4053;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
-        padding: clamp(15px, 3vw, 20px) 0;
+        padding: clamp(10px, 2vw, 15px) 0;
         line-height: 1.2;
     }
     
@@ -228,7 +228,7 @@ st.markdown("""
     .subtitle {
         font-size: clamp(18px, 3vw, 24px);
         font-weight: normal;
-        margin-bottom: clamp(15px, 3vw, 25px);
+        margin-bottom: clamp(10px, 2vw, 15px);
         text-align: center;
         color: #34495e;
         line-height: 1.4;
@@ -236,8 +236,8 @@ st.markdown("""
     
     /* Expander improvements */
     .streamlit-expanderHeader {
-        margin: 1rem 0;
-        padding: 1rem;
+        margin: 0.75rem 0;
+        padding: 0.75rem;
         background: transparent !important;
     }
     
@@ -250,7 +250,7 @@ st.markdown("""
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1.5rem;
-        margin: 2rem 0;
+        margin: 1rem 0;
     }
     
     /* Media Queries */
@@ -281,10 +281,10 @@ st.markdown("""
     /* Challenge section improvements */
     .challenge-section {
         background: linear-gradient(135deg, #2e4053 0%, #34495e 100%);
-        padding: 3rem 2rem;
+        padding: 2rem;
         border-radius: 16px;
         color: white;
-        margin: 4rem 0;
+        margin: 2rem 0;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
     
@@ -306,19 +306,19 @@ st.markdown("""
     
     /* Button spacing */
     .stButton button {
-        margin: 1.5rem auto !important;
+        margin: 1rem auto !important;
     }
     
     /* Remove experiment lab box */
     .experiment-lab {
-        margin: 4rem 0;
+        margin: 2rem 0;
         padding: 0;
         background: transparent;
     }
     
     /* Remove password game box */
     .password-game {
-        margin: 4rem 0;
+        margin: 2rem 0;
         padding: 0;
     }
     </style>
