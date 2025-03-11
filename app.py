@@ -79,10 +79,10 @@ st.markdown("""
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 2rem;
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 3rem;
     }
     
     /* Two-column layout for desktop */
@@ -91,6 +91,11 @@ st.markdown("""
         grid-template-columns: 2fr 1fr;
         gap: 2rem;
         align-items: start;
+        margin: 3rem 0 4rem 0;
+        padding: 2rem;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     }
     
     @media (max-width: 768px) {
@@ -170,11 +175,30 @@ st.markdown("""
         transform: translateY(-2px);
     }
     
-    /* Section spacing */
+    /* Section spacing improvements */
     .section {
-        margin: 3rem 0;
-        padding: 2rem 0;
-        border-top: 2px solid #f0f2f5;
+        margin: 4rem 0;
+        padding: 3rem 0;
+        border-top: 2px solid #e0e3e8;
+        position: relative;
+    }
+    
+    .section::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #2e4053, transparent);
+    }
+    
+    /* Section title improvements */
+    .section h2 {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid #f0f2f5;
+        color: #2e4053;
     }
     
     /* Divider styling */
@@ -220,10 +244,8 @@ st.markdown("""
     
     /* Expander and section styles */
     .streamlit-expanderHeader {
-        margin: 1rem 0;
-        padding: 1rem;
-        background: #f8f9fa;
-        border-radius: 8px;
+        margin: 1.5rem 0;
+        padding: 1.2rem;
     }
     
     .streamlit-expanderContent {
@@ -235,7 +257,8 @@ st.markdown("""
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 20px;
-        margin: 2.5rem 0;
+        margin: 3rem 0;
+        padding: 1rem 0;
     }
     
     /* Media Queries */
@@ -263,13 +286,13 @@ st.markdown("""
         }
     }
     
-    /* Challenge section styling */
+    /* Challenge section improvements */
     .challenge-section {
         background: linear-gradient(135deg, #2e4053 0%, #34495e 100%);
-        padding: 3rem 2rem;
+        padding: 4rem 3rem;
         border-radius: 16px;
         color: white;
-        margin: 3rem 0;
+        margin: 5rem 0 4rem 0;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
     
@@ -292,6 +315,20 @@ st.markdown("""
     /* Button spacing */
     .stButton button {
         margin: 1.5rem auto !important;
+    }
+    
+    /* Game section improvements */
+    .password-game {
+        margin: 4rem 0;
+        padding: 2rem 0;
+    }
+    
+    /* Experiment lab improvements */
+    .experiment-lab {
+        margin: 4rem 0;
+        padding: 2rem;
+        background: #f8f9fa;
+        border-radius: 16px;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -469,8 +506,10 @@ def main():
     st.markdown('<h1 class="title">🛡️ SecureKey Guardian</h1>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">Your Personal Password Strength Builder</p>', unsafe_allow_html=True)
     
-    # Safety disclaimer
+    # Safety disclaimer with improved spacing
+    st.markdown('<div style="margin: 2rem 0;">', unsafe_allow_html=True)
     st.info("⚠️ Practice creating strong passwords without security risks! Use dummy passwords to learn how to enhance your security without entering real credentials.")
+    st.markdown('</div>', unsafe_allow_html=True)
     
     # Main content grid
     st.markdown('<div class="desktop-grid">', unsafe_allow_html=True)
@@ -527,8 +566,8 @@ def main():
     st.markdown('</div>', unsafe_allow_html=True)  # Close side-column
     st.markdown('</div>', unsafe_allow_html=True)  # Close desktop-grid
     
-    # Interactive sections below the grid
-    st.markdown('<div class="section">', unsafe_allow_html=True)
+    # Interactive sections with improved spacing
+    st.markdown('<div class="section experiment-lab">', unsafe_allow_html=True)
     st.markdown("## 🔬 Password Strength Experiment Lab")
     st.write("Learn about password strength through these examples:")
     
@@ -547,7 +586,10 @@ def main():
                 for item in feedback:
                     st.write(item)
     
-    # Password Creation Game
+    st.markdown('</div>', unsafe_allow_html=True)  # Close experiment lab
+    
+    # Password Creation Game with improved spacing
+    st.markdown('<div class="section password-game">', unsafe_allow_html=True)
     st.markdown("## 🎮 Password Creation Game")
     st.write("Try creating passwords following these fun themes and test them in the password checker above:")
     
@@ -562,7 +604,8 @@ def main():
         """, unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
     
-    # After the theme grid, add the Master Challenge section
+    # Master Challenge with improved spacing
+    st.markdown('<div style="margin: 5rem 0;">', unsafe_allow_html=True)
     st.markdown("""
         <div class="challenge-section">
             <h2 class="challenge-title">🏆 Ultimate Password Master Challenge</h2>
@@ -601,7 +644,7 @@ def main():
         display_password_strength(score, feedback)
         display_achievement(score)
     
-    st.markdown('</div>', unsafe_allow_html=True)  # Close section
+    st.markdown('</div>', unsafe_allow_html=True)  # Close challenge spacing
     st.markdown('</div>', unsafe_allow_html=True)  # Close container
 
 if __name__ == "__main__":
