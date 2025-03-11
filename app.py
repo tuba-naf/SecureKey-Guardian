@@ -172,8 +172,9 @@ st.markdown("""
     
     /* Section spacing */
     .section {
-        margin: 2rem 0;
-        padding: 1rem 0;
+        margin: 3rem 0;
+        padding: 2rem 0;
+        border-top: 2px solid #f0f2f5;
     }
     
     /* Divider styling */
@@ -219,7 +220,10 @@ st.markdown("""
     
     /* Expander and section styles */
     .streamlit-expanderHeader {
-        font-size: clamp(16px, 2.5vw, 20px);
+        margin: 1rem 0;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
     }
     
     .streamlit-expanderContent {
@@ -231,7 +235,7 @@ st.markdown("""
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 20px;
-        margin: 20px 0;
+        margin: 2.5rem 0;
     }
     
     /* Media Queries */
@@ -257,6 +261,37 @@ st.markdown("""
         .theme-grid {
             grid-template-columns: 1fr;
         }
+    }
+    
+    /* Challenge section styling */
+    .challenge-section {
+        background: linear-gradient(135deg, #2e4053 0%, #34495e 100%);
+        padding: 3rem 2rem;
+        border-radius: 16px;
+        color: white;
+        margin: 3rem 0;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .challenge-title {
+        color: white;
+        text-align: center;
+        font-size: clamp(24px, 4vw, 36px);
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .challenge-description {
+        color: rgba(255,255,255,0.9);
+        text-align: center;
+        font-size: clamp(16px, 2vw, 18px);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+    
+    /* Button spacing */
+    .stButton button {
+        margin: 1.5rem auto !important;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -526,6 +561,45 @@ def main():
             </div>
         """, unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+    
+    # After the theme grid, add the Master Challenge section
+    st.markdown("""
+        <div class="challenge-section">
+            <h2 class="challenge-title">🏆 Ultimate Password Master Challenge</h2>
+            <p class="challenge-description">
+                Ready to prove your password creation skills? Create the ultimate secure password 
+                combining everything you've learned about strong passwords. Can you achieve the 
+                perfect score and become a Password Master?
+            </p>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    # Master Challenge input
+    master_password = st.text_input(
+        "Create your ultimate password:", 
+        type="password",
+        key="master_challenge",
+        help="Show us your best password creation skills!",
+        placeholder="Create your strongest password here"
+    )
+    
+    if master_password:
+        score, feedback = check_password_strength(master_password)
+        
+        # Special handling for perfect scores
+        if score == 5:
+            st.balloons()
+            st.markdown("""
+                <div style="text-align: center; padding: 2rem;">
+                    <h2 style="color: #2e7d32;">🎉 CONGRATULATIONS! 🎉</h2>
+                    <p style="font-size: 1.2rem; color: #2e7d32;">
+                        You've created a perfect password and mastered the art of password security!
+                    </p>
+                </div>
+            """, unsafe_allow_html=True)
+        
+        display_password_strength(score, feedback)
+        display_achievement(score)
     
     st.markdown('</div>', unsafe_allow_html=True)  # Close section
     st.markdown('</div>', unsafe_allow_html=True)  # Close container
