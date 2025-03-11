@@ -79,7 +79,8 @@ st.markdown("""
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0.25rem;
+        padding: 0;
+        padding-bottom: 0.25rem;
         display: flex;
         flex-direction: column;
     }
@@ -217,11 +218,11 @@ st.markdown("""
     .title {
         font-size: clamp(32px, 5vw, 48px);
         font-weight: bold;
-        margin: 0.25rem 0 0.15rem;
+        margin: 0 0 0.15rem;
         text-align: center;
         color: #2e4053;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
-        padding: 0.25rem 0;
+        padding: 0;
         line-height: 1.2;
     }
     
