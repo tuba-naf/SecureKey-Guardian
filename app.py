@@ -291,15 +291,14 @@ st.markdown("""
     }
     
     .challenge-title {
-        color: white;
+        color: white !important;
         text-align: center;
         font-size: clamp(24px, 4vw, 36px);
         margin-bottom: 1rem;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        background: linear-gradient(90deg, #ffffff, #e0e3e8);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         font-weight: bold;
+        background: none;
+        -webkit-text-fill-color: white;
     }
     
     .challenge-description {
@@ -517,10 +516,8 @@ def main():
     st.markdown('<h1 class="title">🛡️ SecureKey Guardian</h1>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">Your Personal Password Strength Builder</p>', unsafe_allow_html=True)
     
-    # New heading before practice message
-    st.markdown('<h3 class="heading-gradient">Strengthen your password from vulnerable to unbreakable</h3>', unsafe_allow_html=True)
-    
     # Safety disclaimer with improved spacing
+    st.markdown('<h3 class="heading-gradient">Strengthen your password from vulnerable to unbreakable</h3>', unsafe_allow_html=True)
     st.info("⚠️ Practice creating strong passwords without security risks! Use dummy passwords to learn how to enhance your security without entering real credentials.")
     
     # Main content grid
