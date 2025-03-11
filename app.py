@@ -74,64 +74,125 @@ st.markdown("""
         border-radius: 4px;
     }
     
+    /* Desktop-optimized container */
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    /* Two-column layout for desktop */
+    .desktop-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+    
+    @media (max-width: 768px) {
+        .desktop-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
     /* Form styles with accessibility improvements */
     .form-group {
-        margin: 20px 0;
-        padding: clamp(15px, 3vw, 30px);
-        border-radius: 8px;
-        background: rgba(255,255,255,0.05);
-        width: 100%;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: clamp(20px, 3vw, 30px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 2rem;
     }
     
     .form-label {
         display: block;
-        margin-bottom: 8px;
-        font-size: clamp(14px, 2vw, 16px);
+        margin-bottom: 12px;
+        font-size: clamp(16px, 2vw, 18px);
         color: #2e4053;
-        font-weight: 500;
+        font-weight: 600;
     }
     
     .password-input {
         width: 100%;
-        padding: clamp(8px, 2vw, 15px);
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        font-size: clamp(14px, 2vw, 18px);
-        margin-bottom: 10px;
-        transition: border-color 0.3s ease;
+        padding: 12px 16px;
+        border: 2px solid #e0e3e8;
+        border-radius: 8px;
+        font-size: clamp(16px, 2vw, 18px);
+        margin-bottom: 12px;
+        transition: all 0.3s ease;
+        background-color: white;
     }
     
     .password-input:focus {
         outline: none;
         border-color: #2e4053;
-        box-shadow: 0 0 0 2px rgba(46,64,83,0.2);
+        box-shadow: 0 0 0 3px rgba(46,64,83,0.1);
     }
     
-    /* Feedback styles */
-    .feedback {
-        padding: clamp(12px, 2.5vw, 20px);
-        border-radius: 8px;
-        margin: 15px 0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        font-size: clamp(14px, 2vw, 16px);
+    .help-text {
+        font-size: 14px;
+        color: #666;
+        margin-top: 8px;
     }
     
-    .weak { 
-        background-color: #ffebee; 
-        color: #c62828; 
+    /* Button improvements */
+    .stButton button {
+        background-color: #2e4053 !important;
+        color: white !important;
+        border: none !important;
+        padding: 12px 24px !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+        max-width: 300px !important;
+        margin: 1rem auto !important;
     }
     
-    .moderate { 
-        background-color: #fff3e0; 
-        color: #ef6c00; 
+    .stButton button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(46,64,83,0.2) !important;
     }
     
-    .strong { 
-        background-color: #e8f5e9; 
-        color: #2e7d32; 
+    /* Card improvements */
+    .theme-card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+    }
+    
+    .theme-card:hover {
+        transform: translateY(-2px);
+    }
+    
+    /* Section spacing */
+    .section {
+        margin: 2rem 0;
+        padding: 1rem 0;
+    }
+    
+    /* Divider styling */
+    hr {
+        border: none;
+        border-top: 2px solid #f0f2f5;
+        margin: 2rem 0;
+    }
+    
+    /* Info box improvements */
+    .stAlert {
+        border-radius: 12px !important;
+        padding: 1rem !important;
+    }
+    
+    /* Progress bar enhancements */
+    .stProgress > div > div > div {
+        background: linear-gradient(90deg, #ff6b6b 0%, #ffd93d 50%, #6bcb77 100%) !important;
+        border-radius: 8px !important;
     }
     
     /* Title styles */
@@ -156,18 +217,6 @@ st.markdown("""
         line-height: 1.4;
     }
     
-    /* Button styles */
-    .stButton button {
-        width: 100%;
-        max-width: 600px;
-        padding: clamp(8px, 2vw, 15px) clamp(15px, 3vw, 25px);
-        border-radius: 8px;
-        font-weight: 600;
-        margin: 10px auto;
-        font-size: clamp(14px, 2vw, 16px);
-        display: block;
-    }
-    
     /* Expander and section styles */
     .streamlit-expanderHeader {
         font-size: clamp(16px, 2.5vw, 20px);
@@ -177,45 +226,12 @@ st.markdown("""
         font-size: clamp(14px, 2vw, 16px);
     }
     
-    /* Progress bar styling */
-    .stProgress > div > div > div {
-        height: clamp(6px, 1.5vw, 10px);
-    }
-    
-    /* Code block styling */
-    .stCodeBlock {
-        font-size: clamp(14px, 2vw, 16px);
-    }
-    
-    /* Info box styling */
-    .stAlert {
-        font-size: clamp(14px, 2vw, 16px);
-    }
-    
-    /* Markdown content */
-    .stMarkdown {
-        font-size: clamp(14px, 2vw, 16px);
-    }
-    
-    /* Section headings */
-    h1 { font-size: clamp(28px, 4vw, 36px); }
-    h2 { font-size: clamp(24px, 3.5vw, 32px); }
-    h3 { font-size: clamp(20px, 3vw, 28px); }
-    
     /* Responsive grid for themes */
     .theme-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 20px;
         margin: 20px 0;
-    }
-    
-    /* Theme card styling */
-    .theme-card {
-        padding: 15px;
-        border-radius: 8px;
-        background: rgba(255,255,255,0.05);
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     
     /* Media Queries */
@@ -414,42 +430,45 @@ def display_achievement(score):
 def main():
     """Main application function."""
     # Header
-    st.markdown('<div class="container" role="main">', unsafe_allow_html=True)
+    st.markdown('<div class="container">', unsafe_allow_html=True)
     st.markdown('<h1 class="title">🛡️ SecureKey Guardian</h1>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">Your Personal Password Strength Builder</p>', unsafe_allow_html=True)
-    st.write("Transform your passwords from vulnerable to unbreakable!")
     
     # Safety disclaimer
     st.info("⚠️ Practice creating strong passwords without security risks! Use dummy passwords to learn how to enhance your security without entering real credentials.")
     
-    # Main password input and check with improved accessibility
-    st.markdown("""
-        <div class="form-group" role="form" aria-label="Password Check Form">
-            <label class="form-label" for="password-input">Enter your password:</label>
-            <input type="password" 
-                   id="password-input" 
-                   name="password-input" 
-                   class="password-input" 
-                   autocomplete="new-password"
-                   aria-label="Password input field"
-                   aria-describedby="password-help">
-            <div id="password-help" class="help-text">Enter a password to check its strength</div>
-        </div>
-    """, unsafe_allow_html=True)
-    password = st.text_input("", type="password", key="password_input", help="Enter a password to check its strength")
+    # Main content grid
+    st.markdown('<div class="desktop-grid">', unsafe_allow_html=True)
+    
+    # Left column - Password checker and generator
+    st.markdown('<div class="main-column">', unsafe_allow_html=True)
+    
+    # Unified Password Testing Section
+    st.markdown("### 🔒 Test Your Password")
+    st.markdown("Enter a password below or generate a strong one to test its strength!")
+    
+    # Single password input field
+    password = st.text_input("Enter or paste a password:", type="password", key="password_input", 
+                           help="Enter any password to check its strength",
+                           placeholder="Type or paste a password here")
     
     # Generate password button
-    if st.button("Generate Strong Password", key="generate_btn"):
+    if st.button("🎲 Generate Strong Password", key="generate_btn"):
         generated_password = generate_password()
         st.code(generated_password, language=None)
-        st.info("👆 Copy this password and use it in the checker above to verify its strength!")
+        st.info("👆 Copy this password and paste it above to verify its strength!")
     
     if password:
         score, feedback = check_password_strength(password)
         display_password_strength(score, feedback)
+        display_achievement(score)
     
-    # Password Requirements
-    with st.expander("Password Requirements 📋"):
+    st.markdown('</div>', unsafe_allow_html=True)  # Close main-column
+    
+    # Right column - Requirements and tips
+    st.markdown('<div class="side-column">', unsafe_allow_html=True)
+    
+    with st.expander("📋 Password Requirements", expanded=True):
         st.write("""
         A strong password should:
         - Be at least 8 characters long (12+ recommended)
@@ -461,23 +480,24 @@ def main():
         - Avoid sequential patterns (e.g., 'abc', '123')
         """)
     
-    # Security Tips
-    st.markdown("---")
-    st.markdown("""
-        ### 🔐 Password Security Tips:
+    with st.expander("🔐 Security Tips", expanded=True):
+        st.markdown("""
         1. Never use the same password for multiple accounts
         2. Consider using a password manager
         3. Enable two-factor authentication when possible
         4. Change passwords regularly
         5. Never share your passwords with anyone
-    """)
+        """)
     
-    # Interactive Password Evolution Experiment
-    st.markdown("---")
+    st.markdown('</div>', unsafe_allow_html=True)  # Close side-column
+    st.markdown('</div>', unsafe_allow_html=True)  # Close desktop-grid
+    
+    # Interactive sections below the grid
+    st.markdown('<div class="section">', unsafe_allow_html=True)
     st.markdown("## 🔬 Password Strength Experiment Lab")
-    st.write("Let's learn about password strength through a fun experiment!")
+    st.write("Learn about password strength through these examples:")
     
-    with st.expander("🧪 Interactive Password Evolution Experiment"):
+    with st.expander("🧪 Interactive Password Evolution"):
         for stage, (desc, password) in enumerate([
             ("Starting with a Basic Password", SAMPLE_PASSWORDS['weak']),
             ("Adding Complexity", SAMPLE_PASSWORDS['moderate']),
@@ -486,18 +506,16 @@ def main():
         ], 1):
             st.markdown(f"#### {stage}️⃣ {desc}")
             st.code(password)
-            if st.button(f"Test '{password}'"):
+            if st.button(f"Test '{password}'", key=f"test_btn_{stage}"):
                 score, feedback = check_password_strength(password)
                 st.write(f"Score: {score}/5")
                 for item in feedback:
                     st.write(item)
     
-    # Password Creation Game with responsive grid
-    st.markdown("---")
+    # Password Creation Game
     st.markdown("## 🎮 Password Creation Game")
-    st.write("Try creating passwords following these fun themes and test their strength:")
+    st.write("Try creating passwords following these fun themes and test them in the password checker above:")
     
-    # Create a grid container for themes
     st.markdown('<div class="theme-grid">', unsafe_allow_html=True)
     for theme, details in PASSWORD_THEMES.items():
         st.markdown(f"""
@@ -509,26 +527,7 @@ def main():
         """, unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
     
-    # Password Master Challenge with improved accessibility
-    st.markdown("## 🏆 Password Master Challenge")
-    st.markdown("""
-        <div class="form-group" role="form" aria-label="Password Challenge Form">
-            <label class="form-label" for="challenge-input">Create your ultimate password:</label>
-            <input type="password" 
-                   id="challenge-input" 
-                   name="challenge-input" 
-                   class="password-input" 
-                   autocomplete="new-password"
-                   aria-label="Challenge password input field"
-                   aria-describedby="challenge-help">
-            <div id="challenge-help" class="help-text">Create your strongest password</div>
-        </div>
-    """, unsafe_allow_html=True)
-    challenge_password = st.text_input("", type="password", key="challenge_input", help="Create your strongest password")
-    if challenge_password:
-        score, feedback = check_password_strength(challenge_password)
-        display_achievement(score)
-    
+    st.markdown('</div>', unsafe_allow_html=True)  # Close section
     st.markdown('</div>', unsafe_allow_html=True)  # Close container
 
 if __name__ == "__main__":
