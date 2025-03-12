@@ -228,7 +228,7 @@ st.markdown("""
     
     /* Title styles */
     .st-emotion-cache-10trblm.e1nzilvr1 {
-        font-size: clamp(24px, 5vw, 36px); /* Base size for larger mobile */
+        font-size: clamp(36px, 8vw, 56px); /* Increased base size for larger mobile */
         font-weight: bold;
         text-align: center; /* Centralize title */
         color: #2e4053; /* Dark text color */
@@ -430,7 +430,7 @@ st.markdown("""
     /* Media Queries for Mobile */
     @media screen and (max-width: 400px) {
         .st-emotion-cache-10trblm.e1nzilvr1 {
-            font-size: 24px; /* Set to match other headings on mobile */
+            font-size: 40px; /* Further increased size for mobile below 400px */
             margin: 0.5rem 0; /* Adjusted for mobile */
         }
     }
@@ -630,12 +630,12 @@ def main():
     """Main application function."""
     # Header
     st.markdown('<div class="container">', unsafe_allow_html=True)
-    st.markdown('<h1 class="title">🛡️ SecureKey Guardian</h1>', unsafe_allow_html=True)
+    st.markdown('<span class="st-emotion-cache-10trblm e1nzilvr1">🛡️ SecureKey Guardian</span>', unsafe_allow_html=True)
     st.markdown('<div class="title-line"></div>', unsafe_allow_html=True)
-    st.markdown('<p class="subtitle">Your Personal Password Strength Builder</p>', unsafe_allow_html=True)
+    st.markdown('<h2 class="subtitle">Your Personal Password Strength Builder</h2>', unsafe_allow_html=True)
     
     # Add gradient heading and safety disclaimer with reduced spacing
-    st.markdown('<h3 class="heading-gradient">Strengthen your password from being vulnerable to unbreakable</h3>', unsafe_allow_html=True)
+    st.markdown('<h3 class="heading-gradient">Strengthen your password from vulnerable to unbreakable</h3>', unsafe_allow_html=True)
     st.info("⚠️ Practice creating strong passwords without security risks! Use dummy passwords to learn how to enhance your security without entering real credentials.")
     
     # Main content grid with reduced top margin
