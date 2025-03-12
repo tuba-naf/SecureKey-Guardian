@@ -228,7 +228,7 @@ st.markdown("""
     
     /* Title styles */
     .title {
-        font-size: clamp(20px, 4vw, 36px); /* Responsive font size */
+        font-size: clamp(24px, 5vw, 36px); /* Increased base size for larger mobile */
         font-weight: bold;
         margin: 1rem 0; /* Increased margin for spacing */
         text-align: center;
@@ -432,7 +432,7 @@ st.markdown("""
     /* Media Queries for Mobile */
     @media screen and (max-width: 400px) {
         .title {
-            font-size: 18px; /* Fixed size for mobile below 400px */
+            font-size: 22px; /* Increased size for mobile below 400px */
             margin: 0.5rem 0; /* Adjusted for mobile */
         }
         
@@ -652,7 +652,7 @@ def main():
     st.markdown('<p class="subtitle">Your Personal Password Strength Builder</p>', unsafe_allow_html=True)
     
     # Add gradient heading and safety disclaimer with reduced spacing
-    st.markdown('<h3 class="heading-gradient">Strengthen your password from vulnerable to unbreakable</h3>', unsafe_allow_html=True)
+    st.markdown('<h3 class="heading-gradient">Strengthen your password from being vulnerable to unbreakable</h3>', unsafe_allow_html=True)
     st.info("⚠️ Practice creating strong passwords without security risks! Use dummy passwords to learn how to enhance your security without entering real credentials.")
     
     # Main content grid with reduced top margin
