@@ -299,7 +299,7 @@ st.markdown("""
     /* Media query for mobile devices */
     @media (max-width: 768px) {
         .title {
-            font-size: 1.4rem; /* Slightly smaller title size on mobile */
+            font-size: 2rem; /* Increased font size for mobile */
         }
         .strength-meter {
             font-size: 0.4rem; /* Further reduced size for strength meter on mobile */
