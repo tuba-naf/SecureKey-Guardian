@@ -227,14 +227,13 @@ st.markdown("""
     }
     
     /* Title styles */
-    .title {
-        font-size: clamp(36px, 8vw, 56px); /* Increased base size for larger mobile */
+    .st-emotion-cache-10trblm.e1nzilvr1 {
+        font-size: clamp(24px, 5vw, 36px); /* Base size for larger mobile */
         font-weight: bold;
-        margin: 1rem 0; /* Increased margin for spacing */
-        text-align: center;
+        text-align: center; /* Centralize title */
         color: #2e4053; /* Dark text color */
-        padding: 0;
         line-height: 1.2; /* Adjusted line height */
+        margin: 1rem 0; /* Margin for spacing */
     }
     
     /* New line below title */
@@ -247,11 +246,11 @@ st.markdown("""
     
     /* Subtitle styles */
     .subtitle {
-        font-size: clamp(16px, 3vw, 24px); /* Responsive font size */
-        font-weight: normal; /* Normal weight */
-        margin: 0.5rem 0; /* Increased margin for spacing */
-        text-align: center;
+        font-size: clamp(20px, 4vw, 28px); /* Adjusted for other headings */
+        font-weight: normal;
+        text-align: center; /* Centralize subtitle */
         color: #34495e; /* Darker subtitle color */
+        margin: 0.75rem 0; /* Increased margin for spacing */
         line-height: 1.3; /* Adjusted line height */
     }
     
@@ -385,14 +384,13 @@ st.markdown("""
     
     /* Gradient heading styles */
     .heading-gradient {
-        font-size: clamp(14px, 2.5vw, 22px); /* Responsive font size */
+        font-size: clamp(20px, 4vw, 28px); /* Adjusted for other headings */
         font-weight: 600; /* Semi-bold for emphasis */
         background: linear-gradient(90deg, #2e4053, #34495e);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-align: center;
-        margin: 0.5rem 0; /* Adjusted margin for spacing */
-        padding: 0;
+        text-align: center; /* Centralize gradient heading */
+        margin: 0.75rem 0; /* Adjusted margin for spacing */
         line-height: 1.2; /* Adjusted line height */
     }
     
@@ -431,24 +429,9 @@ st.markdown("""
 
     /* Media Queries for Mobile */
     @media screen and (max-width: 400px) {
-        .title {
-            font-size: 36px; /* Increased size for mobile below 400px */
+        .st-emotion-cache-10trblm.e1nzilvr1 {
+            font-size: 24px; /* Set to match other headings on mobile */
             margin: 0.5rem 0; /* Adjusted for mobile */
-        }
-        
-        .subtitle {
-            font-size: 14px; /* Fixed size for mobile below 400px */
-            margin: 0.5rem 0; /* Adjusted for mobile */
-        }
-        
-        .heading-gradient {
-            font-size: 12px; /* Fixed size for mobile below 400px */
-            margin: 0.4rem 0; /* Adjusted for mobile */
-        }
-
-        .safety-disclaimer {
-            font-size: 10px; /* Fixed size for mobile below 400px */
-            margin: 0.4rem 0; /* Adjusted for mobile */
         }
     }
 
