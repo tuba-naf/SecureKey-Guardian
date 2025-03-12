@@ -228,30 +228,51 @@ st.markdown("""
     
     /* Title styles */
     .st-emotion-cache-10trblm.e1nzilvr1 {
-        font-size: clamp(36px, 8vw, 56px); /* Increased base size for larger mobile */
+        font-size: clamp(36px, 8vw, 56px); /* Title size */
         font-weight: bold;
-        text-align: center; /* Centralize title */
+        text-align: center; /* Center title */
         color: #2e4053; /* Dark text color */
         line-height: 1.2; /* Adjusted line height */
         margin: 1rem 0; /* Margin for spacing */
+        display: block; /* Block element for centering */
     }
     
-    /* New line below title */
+    /* Media Queries for Mobile */
+    @media screen and (max-width: 400px) {
+        .st-emotion-cache-10trblm.e1nzilvr1 {
+            font-size: 40px; /* Increased size for mobile */
+            margin: 0.5rem 0; /* Adjusted for mobile */
+        }
+    }
+
+    /* Line below title */
     .title-line {
         width: 100%; /* Full width */
         height: 2px; /* Thickness of the line */
         background-color: #2e4053; /* Color of the line */
         margin: 0.5rem auto; /* Margin for spacing */
     }
-    
+
     /* Subtitle styles */
     .subtitle {
-        font-size: clamp(20px, 4vw, 28px); /* Adjusted for other headings */
+        font-size: clamp(10px, 2vw, 14px); /* Smaller and responsive font size for the subtitle */
         font-weight: normal;
-        text-align: center; /* Centralize subtitle */
+        text-align: center; /* Center subtitle */
         color: #34495e; /* Darker subtitle color */
-        margin: 0.75rem 0; /* Increased margin for spacing */
+        margin: 0.5rem 0; /* Margin for spacing */
         line-height: 1.3; /* Adjusted line height */
+    }
+
+    /* Gradient heading styles */
+    .heading-gradient {
+        font-size: clamp(20px, 4vw, 28px); /* Size for gradient heading */
+        font-weight: 600; /* Semi-bold for emphasis */
+        background: linear-gradient(90deg, #2e4053, #34495e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; /* Ensure text is transparent for gradient */
+        text-align: center; /* Center gradient heading */
+        margin: 0.75rem 0; /* Margin for spacing */
+        line-height: 1.2; /* Adjusted line height */
     }
     
     /* Expander improvements */
@@ -382,18 +403,6 @@ st.markdown("""
         padding: 0;
     }
     
-    /* Gradient heading styles */
-    .heading-gradient {
-        font-size: clamp(20px, 4vw, 28px); /* Adjusted for other headings */
-        font-weight: 600; /* Semi-bold for emphasis */
-        background: linear-gradient(90deg, #2e4053, #34495e);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-align: center; /* Centralize gradient heading */
-        margin: 0.75rem 0; /* Adjusted margin for spacing */
-        line-height: 1.2; /* Adjusted line height */
-    }
-    
     /* Safety disclaimer styles */
     .safety-disclaimer {
         font-size: clamp(12px, 2vw, 16px); /* Responsive font size */
@@ -425,37 +434,6 @@ st.markdown("""
 
     .heading-gradient:hover {
         transform: scale(1.02); /* Slightly enlarge on hover */
-    }
-
-    /* Media Queries for Mobile */
-    @media screen and (max-width: 400px) {
-        .st-emotion-cache-10trblm.e1nzilvr1 {
-            font-size: 40px; /* Further increased size for mobile below 400px */
-            margin: 0.5rem 0; /* Adjusted for mobile */
-        }
-    }
-
-    /* Media Queries for larger mobile devices */
-    @media screen and (max-width: 480px) {
-        .title {
-            font-size: clamp(16px, 3vw, 24px); /* Smaller font size for mobile */
-            margin: 0.5rem 0; /* Adjusted for mobile */
-        }
-        
-        .subtitle {
-            font-size: clamp(12px, 2vw, 16px); /* Smaller font size for mobile */
-            margin: 0.5rem 0; /* Adjusted for mobile */
-        }
-        
-        .heading-gradient {
-            font-size: clamp(10px, 2vw, 14px); /* Smaller font size for mobile */
-            margin: 0.4rem 0; /* Adjusted for mobile */
-        }
-
-        .safety-disclaimer {
-            font-size: clamp(10px, 1.5vw, 12px); /* Smaller font size for mobile */
-            margin: 0.4rem 0; /* Adjusted for mobile */
-        }
     }
     </style>
     """, unsafe_allow_html=True)
@@ -631,11 +609,11 @@ def main():
     # Header
     st.markdown('<div class="container">', unsafe_allow_html=True)
     st.markdown('<span class="st-emotion-cache-10trblm e1nzilvr1">🛡️ SecureKey Guardian</span>', unsafe_allow_html=True)
-    st.markdown('<div class="title-line"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="title-line"></div>', unsafe_allow_html=True)  # Line below the title
     st.markdown('<h2 class="subtitle">Your Personal Password Strength Builder</h2>', unsafe_allow_html=True)
+    st.markdown('<h3 class="heading-gradient">Strengthen your password from being vulnerable to unbreakable</h3>', unsafe_allow_html=True)
     
     # Add gradient heading and safety disclaimer with reduced spacing
-    st.markdown('<h3 class="heading-gradient">Strengthen your password from vulnerable to unbreakable</h3>', unsafe_allow_html=True)
     st.info("⚠️ Practice creating strong passwords without security risks! Use dummy passwords to learn how to enhance your security without entering real credentials.")
     
     # Main content grid with reduced top margin
