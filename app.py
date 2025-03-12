@@ -228,7 +228,7 @@ st.markdown("""
     
     /* Title styles */
     .title {
-        font-size: clamp(24px, 5vw, 36px); /* Increased base size for larger mobile */
+        font-size: clamp(32px, 6vw, 48px); /* Increased base size for larger mobile */
         font-weight: bold;
         margin: 1rem 0; /* Increased margin for spacing */
         text-align: center;
@@ -432,7 +432,7 @@ st.markdown("""
     /* Media Queries for Mobile */
     @media screen and (max-width: 400px) {
         .title {
-            font-size: 22px; /* Increased size for mobile below 400px */
+            font-size: 28px; /* Increased size for mobile below 400px */
             margin: 0.5rem 0; /* Adjusted for mobile */
         }
         
