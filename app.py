@@ -254,7 +254,7 @@ st.markdown("""
 
     /* New heading styles */
     .strength-meter {
-        font-size: clamp(10px, 3vw, 16px); /* Responsive font size */
+        font-size: 1.2rem !important; /* Increased size for strength meter */
         font-weight: bold; /* Bold for emphasis */
         text-align: center; /* Center heading */
         color: #2e4053; /* Dark text color */
@@ -264,7 +264,7 @@ st.markdown("""
 
     /* Gradient heading styles */
     .heading-gradient {
-        font-size: clamp(12px, 3vw, 20px); /* Responsive size for gradient heading */
+        font-size: 1.5rem !important; /* Increased size for gradient heading */
         font-weight: 600; /* Semi-bold for emphasis */
         background: linear-gradient(90deg, #2e4053, #34495e);
         -webkit-background-clip: text;
