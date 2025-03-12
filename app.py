@@ -432,7 +432,7 @@ st.markdown("""
     /* Media Queries for Mobile */
     @media screen and (max-width: 400px) {
         .title {
-            font-size: 34px; /* Increased size for mobile below 400px */
+            font-size: 36px; /* Increased size for mobile below 400px */
             margin: 0.5rem 0; /* Adjusted for mobile */
         }
         
