@@ -226,55 +226,81 @@ st.markdown("""
         border-radius: 8px !important;
     }
     
+    /* General body styles */
+    body {
+        font-family: Arial, sans-serif; /* Set a clean font for the body */
+        background-color: #f9f9f9; /* Light background for contrast */
+        color: #2e4053; /* Dark text color for readability */
+    }
+
     /* Title styles */
     .st-emotion-cache-10trblm.e1nzilvr1 {
-        font-size: clamp(36px, 8vw, 56px); /* Title size */
+        font-size: clamp(36px, 8vw, 56px); /* Responsive title size */
         font-weight: bold;
         text-align: center; /* Center title */
         color: #2e4053; /* Dark text color */
         line-height: 1.2; /* Adjusted line height */
-        margin: 1rem 0; /* Margin for spacing */
+        margin: 1.5rem 0; /* Increased margin for spacing */
         display: block; /* Block element for centering */
     }
-    
+
     /* Media Queries for Mobile */
     @media screen and (max-width: 400px) {
         .st-emotion-cache-10trblm.e1nzilvr1 {
             font-size: 40px; /* Increased size for mobile */
-            margin: 0.5rem 0; /* Adjusted for mobile */
+            margin: 1rem 0; /* Adjusted for mobile */
         }
     }
 
     /* Line below title */
     .title-line {
         width: 100%; /* Full width */
-        height: 2px; /* Thickness of the line */
+        height: 3px; /* Thickness of the line */
         background-color: #2e4053; /* Color of the line */
         margin: 0.5rem auto; /* Margin for spacing */
     }
 
     /* Subtitle styles */
     .subtitle {
-        font-size: clamp(10px, 2vw, 14px); /* Smaller and responsive font size for the subtitle */
+        font-size: clamp(14px, 3vw, 20px); /* Responsive and smaller font size for the subtitle */
         font-weight: normal;
         text-align: center; /* Center subtitle */
         color: #34495e; /* Darker subtitle color */
         margin: 0.5rem 0; /* Margin for spacing */
-        line-height: 1.3; /* Adjusted line height */
+        line-height: 1.4; /* Adjusted line height for better readability */
     }
 
     /* Gradient heading styles */
     .heading-gradient {
-        font-size: clamp(20px, 4vw, 28px); /* Size for gradient heading */
+        font-size: clamp(18px, 4vw, 26px); /* Responsive size for gradient heading */
         font-weight: 600; /* Semi-bold for emphasis */
         background: linear-gradient(90deg, #2e4053, #34495e);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent; /* Ensure text is transparent for gradient */
         text-align: center; /* Center gradient heading */
-        margin: 0.75rem 0; /* Margin for spacing */
-        line-height: 1.2; /* Adjusted line height */
+        margin: 1rem 0; /* Margin for spacing */
+        line-height: 1.3; /* Adjusted line height */
     }
-    
+
+    /* Additional styles for responsiveness */
+    @media screen and (max-width: 768px) {
+        .subtitle {
+            font-size: 16px; /* Adjusted size for tablets */
+        }
+        .heading-gradient {
+            font-size: 22px; /* Adjusted size for tablets */
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .subtitle {
+            font-size: 14px; /* Further adjusted size for mobile */
+        }
+        .heading-gradient {
+            font-size: 20px; /* Further adjusted size for mobile */
+        }
+    }
+
     /* Expander improvements */
     .streamlit-expanderHeader {
         margin: 0.75rem 0;
@@ -292,66 +318,6 @@ st.markdown("""
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1.5rem;
         margin: 1rem 0;
-    }
-    
-    /* Media Queries */
-    @media screen and (max-width: 768px) {
-        .stApp {
-            padding: 0;
-        }
-        
-        form {
-            padding: 15px;
-        }
-        
-        .feedback {
-            padding: 12px;
-        }
-        
-        .title {
-            font-size: clamp(28px, 3vw, 24px);
-            margin: 0 0 0.5rem;
-        }
-        
-        .subtitle {
-            font-size: clamp(12px, 2vw, 16px);
-            margin: 0 0 0.3rem;
-        }
-        
-        .heading-gradient {
-            font-size: clamp(11px, 1.8vw, 14px);
-            margin: 0.25rem 0 0.3rem;
-        }
-    }
-    
-    @media screen and (max-width: 480px) {
-        .stApp {
-            padding: 0 5px;
-        }
-        
-        .theme-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .title {
-            font-size: clamp(18px, 3vw, 24px); /* Smaller font size for mobile */
-            margin: 0.5rem 0; /* Adjusted for mobile */
-        }
-        
-        .subtitle {
-            font-size: clamp(12px, 2vw, 16px); /* Smaller font size for mobile */
-            margin: 0.5rem 0; /* Adjusted for mobile */
-        }
-        
-        .heading-gradient {
-            font-size: clamp(10px, 2vw, 14px); /* Smaller font size for mobile */
-            margin: 0.4rem 0; /* Adjusted for mobile */
-        }
-
-        .safety-disclaimer {
-            font-size: clamp(10px, 1.5vw, 12px); /* Smaller font size for mobile */
-            margin: 0.4rem 0; /* Adjusted for mobile */
-        }
     }
     
     /* Challenge section improvements */
