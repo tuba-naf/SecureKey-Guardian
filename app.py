@@ -44,14 +44,26 @@ st.markdown("""
     footer {visibility: hidden;}
     header {visibility: hidden;}
     
+    /* Override Streamlit's default padding */
+    .block-container {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    .stApp > header {
+        display: none;
+    }
+
     /* Base styles */
     .stApp {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0;
         min-height: 100vh;
         min-height: -webkit-fill-available;
         min-height: stretch;
+        background-color: #ffffff; /* White background for the app */
     }
     
     /* Scrollbar styling */
@@ -78,9 +90,8 @@ st.markdown("""
     .container {
         width: 100%;
         max-width: 1200px;
-        margin: 0 auto;
+        margin: 0;
         padding: 0;
-        padding-bottom: 0.25rem;
         display: flex;
         flex-direction: column;
     }
@@ -151,6 +162,7 @@ st.markdown("""
         transition: all 0.3s ease !important;
         max-width: 300px !important;
         margin: 1rem auto !important;
+        cursor: pointer;
     }
     
     .stButton button:hover {
@@ -216,24 +228,31 @@ st.markdown("""
     
     /* Title styles */
     .title {
-        font-size: clamp(32px, 5vw, 48px);
+        font-size: clamp(20px, 4vw, 36px); /* Responsive font size */
         font-weight: bold;
-        margin: 0 0 0.15rem;
+        margin: 1rem 0; /* Increased margin for spacing */
         text-align: center;
-        color: #2e4053;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+        color: #2e4053; /* Dark text color */
         padding: 0;
-        line-height: 1.2;
+        line-height: 1.2; /* Adjusted line height */
+    }
+    
+    /* New line below title */
+    .title-line {
+        width: 100%; /* Full width */
+        height: 2px; /* Thickness of the line */
+        background-color: #2e4053; /* Color of the line */
+        margin: 0.5rem auto; /* Margin for spacing */
     }
     
     /* Subtitle styles */
     .subtitle {
-        font-size: clamp(18px, 3vw, 24px);
-        font-weight: normal;
-        margin: 0 0 0.15rem;
+        font-size: clamp(16px, 3vw, 24px); /* Responsive font size */
+        font-weight: normal; /* Normal weight */
+        margin: 0.5rem 0; /* Increased margin for spacing */
         text-align: center;
-        color: #34495e;
-        line-height: 1.4;
+        color: #34495e; /* Darker subtitle color */
+        line-height: 1.3; /* Adjusted line height */
     }
     
     /* Expander improvements */
@@ -258,7 +277,7 @@ st.markdown("""
     /* Media Queries */
     @media screen and (max-width: 768px) {
         .stApp {
-            padding: 0 10px;
+            padding: 0;
         }
         
         form {
@@ -267,6 +286,21 @@ st.markdown("""
         
         .feedback {
             padding: 12px;
+        }
+        
+        .title {
+            font-size: clamp(18px, 3vw, 24px);
+            margin: 0 0 0.25rem;
+        }
+        
+        .subtitle {
+            font-size: clamp(12px, 2vw, 16px);
+            margin: 0 0 0.3rem;
+        }
+        
+        .heading-gradient {
+            font-size: clamp(11px, 1.8vw, 14px);
+            margin: 0.25rem 0 0.3rem;
         }
     }
     
@@ -277,6 +311,26 @@ st.markdown("""
         
         .theme-grid {
             grid-template-columns: 1fr;
+        }
+        
+        .title {
+            font-size: clamp(18px, 3vw, 24px); /* Smaller font size for mobile */
+            margin: 0.5rem 0; /* Adjusted for mobile */
+        }
+        
+        .subtitle {
+            font-size: clamp(12px, 2vw, 16px); /* Smaller font size for mobile */
+            margin: 0.5rem 0; /* Adjusted for mobile */
+        }
+        
+        .heading-gradient {
+            font-size: clamp(10px, 2vw, 14px); /* Smaller font size for mobile */
+            margin: 0.4rem 0; /* Adjusted for mobile */
+        }
+
+        .safety-disclaimer {
+            font-size: clamp(10px, 1.5vw, 12px); /* Smaller font size for mobile */
+            margin: 0.4rem 0; /* Adjusted for mobile */
         }
     }
     
@@ -329,17 +383,96 @@ st.markdown("""
         padding: 0;
     }
     
-    /* Heading styles */
+    /* Gradient heading styles */
     .heading-gradient {
-        font-size: clamp(20px, 3vw, 24px);
-        font-weight: 600;
+        font-size: clamp(14px, 2.5vw, 22px); /* Responsive font size */
+        font-weight: 600; /* Semi-bold for emphasis */
         background: linear-gradient(90deg, #2e4053, #34495e);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
-        margin: 0.15rem 0 0.15rem 0;
+        margin: 0.5rem 0; /* Adjusted margin for spacing */
         padding: 0;
-        line-height: 1.4;
+        line-height: 1.2; /* Adjusted line height */
+    }
+    
+    /* Safety disclaimer styles */
+    .safety-disclaimer {
+        font-size: clamp(12px, 2vw, 16px); /* Responsive font size */
+        color: #ffcc00; /* Optional: Change color for emphasis */
+        text-align: center;
+        margin: 1rem 0; /* Increased margin for spacing */
+        line-height: 1.3; /* Adjusted line height */
+    }
+    
+    /* Footer styles */
+    .footer {
+        text-align: center;
+        padding: 1rem 0;
+        color: #2e4053;
+        font-size: 0.9rem;
+        font-weight: 500;
+        opacity: 0.9;
+        margin-top: auto;
+    }
+
+    /* Hover effects */
+    .title:hover {
+        background-color: rgba(46, 64, 83, 0.1); /* Light background on hover */
+    }
+
+    .subtitle:hover {
+        color: #2e4053; /* Darker color on hover */
+    }
+
+    .heading-gradient:hover {
+        transform: scale(1.02); /* Slightly enlarge on hover */
+    }
+
+    /* Media Queries for Mobile */
+    @media screen and (max-width: 400px) {
+        .title {
+            font-size: 18px; /* Fixed size for mobile below 400px */
+            margin: 0.5rem 0; /* Adjusted for mobile */
+        }
+        
+        .subtitle {
+            font-size: 14px; /* Fixed size for mobile below 400px */
+            margin: 0.5rem 0; /* Adjusted for mobile */
+        }
+        
+        .heading-gradient {
+            font-size: 12px; /* Fixed size for mobile below 400px */
+            margin: 0.4rem 0; /* Adjusted for mobile */
+        }
+
+        .safety-disclaimer {
+            font-size: 10px; /* Fixed size for mobile below 400px */
+            margin: 0.4rem 0; /* Adjusted for mobile */
+        }
+    }
+
+    /* Media Queries for larger mobile devices */
+    @media screen and (max-width: 480px) {
+        .title {
+            font-size: clamp(16px, 3vw, 24px); /* Smaller font size for mobile */
+            margin: 0.5rem 0; /* Adjusted for mobile */
+        }
+        
+        .subtitle {
+            font-size: clamp(12px, 2vw, 16px); /* Smaller font size for mobile */
+            margin: 0.5rem 0; /* Adjusted for mobile */
+        }
+        
+        .heading-gradient {
+            font-size: clamp(10px, 2vw, 14px); /* Smaller font size for mobile */
+            margin: 0.4rem 0; /* Adjusted for mobile */
+        }
+
+        .safety-disclaimer {
+            font-size: clamp(10px, 1.5vw, 12px); /* Smaller font size for mobile */
+            margin: 0.4rem 0; /* Adjusted for mobile */
+        }
     }
     </style>
     """, unsafe_allow_html=True)
@@ -515,6 +648,7 @@ def main():
     # Header
     st.markdown('<div class="container">', unsafe_allow_html=True)
     st.markdown('<h1 class="title">🛡️ SecureKey Guardian</h1>', unsafe_allow_html=True)
+    st.markdown('<div class="title-line"></div>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">Your Personal Password Strength Builder</p>', unsafe_allow_html=True)
     
     # Add gradient heading and safety disclaimer with reduced spacing
@@ -664,6 +798,9 @@ def main():
     
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)  # Close container
+    
+    # Add footer
+    st.markdown('<div class="footer">Designed and created by Tuba Nafees</div>', unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main() 
