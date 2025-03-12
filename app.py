@@ -20,7 +20,7 @@ st.set_page_config(
 st.markdown("""
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2e4053">
+    <meta name="theme-color" content="#ffffff">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Permissions-Policy" content="ambient-light-sensor=(), battery=(), document-domain=(), layout-animations=(), oversized-images=(), sync-xhr=(), wake-lock=(), vr=()">
@@ -35,8 +35,9 @@ st.markdown("""
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        -webkit-text-size-adjust: 100%;
-        text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%; /* Chrome, Safari */
+        -moz-text-size-adjust: 100%; /* Firefox */
+        text-size-adjust: 100%; /* Standard */
     }
 
     /* Hide Streamlit elements */
@@ -60,21 +61,19 @@ st.markdown("""
         max-width: 1200px;
         margin: 0 auto;
         padding: 0;
-        min-height: 100vh;
-        min-height: -webkit-fill-available;
-        min-height: stretch;
+        min-height: -webkit-fill-available; /* For Edge */
+        min-height: stretch; /* Fallback for other browsers */
         background-color: #ffffff; /* White background for the app */
     }
     
     /* Scrollbar styling */
     * {
-        scrollbar-width: thin;
         -webkit-scrollbar-width: thin;
+        scrollbar-width: thin;
     }
     
     *::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
+        width: thin; /* For WebKit browsers */
     }
     
     *::-webkit-scrollbar-track {
@@ -94,12 +93,16 @@ st.markdown("""
         padding: 0;
         display: flex;
         flex-direction: column;
+        min-height: -webkit-fill-available; /* For Edge and other browsers */
+        min-height: stretch; /* Fallback for other browsers */
     }
     
     /* Two-column layout for desktop */
     .desktop-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
+        display: -ms-grid; /* IE 10+ */
+        display: grid; /* Standard */
+        grid-template-columns: repeat(3, 1fr);
+        -ms-grid-columns: (1fr)[3]; /* IE 10+ */
         gap: 1.5rem;
         align-items: start;
         margin: 1rem 0 1.5rem;
@@ -232,6 +235,7 @@ st.markdown("""
         background-color: #f4f4f4; /* Light background for contrast */
         color: #333; /* Dark text color */
         padding: 20px; /* Add some padding around the content */
+        text-size-adjust: 100%; /* Adjust text size for better readability */
     }
 
     /* Title styles */
@@ -266,20 +270,10 @@ st.markdown("""
     .heading-gradient {
         font-size: 1.5rem !important; /* Increased size for gradient heading */
         font-weight: 600; /* Semi-bold for emphasis */
-        background: linear-gradient(90deg, #2e4053, #34495e);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent; /* Ensure text is transparent for gradient */
+        color: #2e4053; /* Set a solid color for visibility */
         text-align: center; /* Center gradient heading */
         margin: 1rem 0; /* Margin for spacing */
         line-height: 1.3; /* Adjusted line height */
-    }
-
-    /* Ensure text is visible */
-    .heading-gradient {
-        color: #2e4053; /* Fallback color for visibility */
-        background: linear-gradient(90deg, #2e4053, #34495e);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent; /* Ensure text is transparent for gradient */
     }
 
     /* Additional content styles */
@@ -314,6 +308,28 @@ st.markdown("""
             font-size: 0.5rem; /* Further reduced size for gradient heading on mobile */
         }
     }
+
+    /* Fallback for Safari */
+    .scrollable {
+        overflow: auto; /* Ensure scrollbars are visible */
+        scrollbar-width: thin; /* For Firefox */
+        -webkit-overflow-scrolling: touch; /* For iOS */
+    }
+
+    /* New user-select fix */
+    .user-select-none {
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE 10+ */
+        user-select: none; /* Standard */
+    }
+
+    /* New object-fit and object-position fixes */
+    object-fit: cover;
+    -ms-object-fit: cover;
+
+    object-position: center;
+    -ms-object-position: center;
     </style>
     """, unsafe_allow_html=True)
 
@@ -490,7 +506,7 @@ def main():
     st.markdown('<h1 class="title">🛡️ SecureKey Guardian</h1>', unsafe_allow_html=True)
     st.markdown('<div class="title-line"></div>', unsafe_allow_html=True)  # Line below the title
     st.markdown('<h2 class="strength-meter">Your Personal Password Strength Meter</h2>', unsafe_allow_html=True)  # Strength meter heading
-    st.markdown('<h3 class="heading-gradient" style="font-size: 1.5rem; color: #2e4053;">Strengthen your password from being vulnerable to unbreakable</h3>', unsafe_allow_html=True)  # Gradient heading
+    st.markdown('<h3 style="font-size: 1.5rem; color: #2e4053; text-align: center;">Strengthen your password from being vulnerable to unbreakable</h3>', unsafe_allow_html=True)  # Gradient heading
     
     # Additional content with warning in yellow div
     st.markdown('<p class="warning">⚠️ Practice creating strong passwords without security risks! Use dummy passwords to learn how to enhance your security without entering real credentials.</p>', unsafe_allow_html=True)
