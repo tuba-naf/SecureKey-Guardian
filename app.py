@@ -474,23 +474,6 @@ st.markdown("""
             margin: 0.4rem 0; /* Adjusted for mobile */
         }
     }
-
-    /* Targeting the specific span class for the title */
-    .st-emotion-cache-10trblm.e1nzilvr1 {
-        font-size: clamp(36px, 8vw, 56px); /* Increased base size for larger mobile */
-        font-weight: bold;
-        text-align: center;
-        color: #2e4053; /* Dark text color */
-        line-height: 1.2; /* Adjusted line height */
-    }
-
-    /* Media Queries for Mobile */
-    @media screen and (max-width: 400px) {
-        .st-emotion-cache-10trblm.e1nzilvr1 {
-            font-size: 36px; /* Increased size for mobile below 400px */
-            margin: 0.5rem 0; /* Adjusted for mobile */
-        }
-    }
     </style>
     """, unsafe_allow_html=True)
 
