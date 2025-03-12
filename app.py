@@ -289,8 +289,8 @@ st.markdown("""
         }
         
         .title {
-            font-size: clamp(18px, 3vw, 24px);
-            margin: 0 0 0.25rem;
+            font-size: clamp(28px, 3vw, 24px);
+            margin: 0 0 0.5rem;
         }
         
         .subtitle {
