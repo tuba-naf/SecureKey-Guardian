@@ -274,6 +274,14 @@ st.markdown("""
         line-height: 1.3; /* Adjusted line height */
     }
 
+    /* Ensure text is visible */
+    .heading-gradient {
+        color: #2e4053; /* Fallback color for visibility */
+        background: linear-gradient(90deg, #2e4053, #34495e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; /* Ensure text is transparent for gradient */
+    }
+
     /* Additional content styles */
     .content {
         font-size: clamp(14px, 4vw, 20px); /* Increased responsive font size for additional content */
@@ -482,7 +490,7 @@ def main():
     st.markdown('<h1 class="title">🛡️ SecureKey Guardian</h1>', unsafe_allow_html=True)
     st.markdown('<div class="title-line"></div>', unsafe_allow_html=True)  # Line below the title
     st.markdown('<h2 class="strength-meter">Your Personal Password Strength Meter</h2>', unsafe_allow_html=True)  # Strength meter heading
-    st.markdown('<h3 class="heading-gradient">Strengthen your password from being vulnerable to unbreakable</h3>', unsafe_allow_html=True)  # Gradient heading
+    st.markdown('<h3 class="heading-gradient" style="font-size: 1.5rem; color: #2e4053;">Strengthen your password from being vulnerable to unbreakable</h3>', unsafe_allow_html=True)  # Gradient heading
     
     # Additional content with warning in yellow div
     st.markdown('<p class="warning">⚠️ Practice creating strong passwords without security risks! Use dummy passwords to learn how to enhance your security without entering real credentials.</p>', unsafe_allow_html=True)
